@@ -4,7 +4,7 @@ from datetime import datetime
 import models
 
 
-class BaseModel:
+class BaseModel():
 
     """ main class, it creates id, time the procces was created and  """
     def __init__(self, *args, **kwargs):
@@ -12,7 +12,6 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.update_at = datetime.now()
-            self.storage.new(self)
 
         else:
             form = "%Y-%m-%dT%H:%M:%S.%f"
@@ -32,7 +31,7 @@ class BaseModel:
             the current datetime 
         """
         self.update_at = datetime.now()
-        model.storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """ returns a dictironaty containing all keys/values of __dict__"""
