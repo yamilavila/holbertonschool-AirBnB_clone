@@ -22,7 +22,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """ when user pres <ENTER> nothing is executed  """
         pass
-    
+
     def do_create(self, command):
         if command is None:
             print("** class name missing **")
@@ -33,7 +33,6 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
         else:
             print("** class doesn't exist **")
-
 
 
 if __name__ == '__main__':
