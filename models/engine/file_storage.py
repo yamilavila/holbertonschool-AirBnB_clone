@@ -33,10 +33,10 @@ class FileStorage():
         objs_dict = {}
 
         # comment: Serializable objects and save in json file
-        for key, obj in self.__objects.items():
-            objs_dict[key] = obj.to_dict()
         with open(self.__file_path, mode="w") as file_json:
-            file_json.write(json.dumps(objs_dict))
+            for key, obj in self.__objects.items():
+                objs_dict[key] = obj.to_dict()
+            file_json.dumps(objs_dict, file_json)
 
     def reload(self):
         """
