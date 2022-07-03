@@ -13,20 +13,20 @@ class HBNBCommand(cmd.Cmd):
 
     """This is a static method for keys & arguments for one place validation"""
     @staticmethod
-    def key_for_command:
-        1_command = command.split()
-        count = len(1_command)
+    def key_for_command(command):
+        new_command = command.split()
+        count = len(new_command)
         key = None
         tmp_val = None
         if not command:
             print("** class name missing ** ")
-        elif 1_command[0] not in classes:
+        elif new_command[0] not in classes:
             print("** class doesn`t exist **")
         elif count < 2:
             print("** instance id missing **")
         else:
-            1_command[1] = 1_command[1].strip('",')
-            tmp_val = '.'.join(1_command[0:2])
+            new_command[1] = new_command[1].strip('",')
+            tmp_val = '.'.join(new_command[0:2])
             if tmp_val not in storage.all():
                 print("** no instance found **")
             else:
@@ -78,12 +78,12 @@ class HBNBCommand(cmd.Cmd):
         if not arguments:
             for a in storage.all().values():
                 print(a)
-            elif arguments[0] in classes:
-                for b, c in storage.all().items():
-                    if b[0: b.index('.')] == arguments[0]:
-                        print(c)
-            else:
-                print("** class doesn`t exist **")
+        elif arguments[0] in classes:
+            for b, c in storage.all().items():
+                if b[0: b.index('.')] == arguments[0]:
+                    print(c)
+        else:
+            print("** class doesn`t exist **")
 
     def do_update(self, command):
         """Updates the arguments"""
