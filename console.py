@@ -47,7 +47,8 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, command):
-        """Creates a new instance of BaseModel, saves it (in the JSON file) & prints id"""
+        """Creates a new instance of BaseModel, saves it
+        (in the JSON file) & prints id"""
         if command is None:
             print("** class name missing **")
         elif command == "BaseModel":
@@ -59,7 +60,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, command):
-        """Prints the string representation of an instance based on the name & id"""
+        """Prints the string representation of an instance based
+        on the name & id"""
         key = HBNBCommand.val_get_key(command)
         if key:
             print(storage.all()[key])
@@ -72,7 +74,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, command):
-        """Prints all string representation of all instances based or not on the class name"""
+        """Prints all string representation of all
+        instances based or not on the class name"""
         arguments = command.split()
         if not arguments:
             for a in storage.all().values():
@@ -84,13 +87,13 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn`t exist **")
 
-    def do_update(self, command):
+    def do_update(self, line):
         """Updates the arguments.
         Usage: update <class name> <id> <attribute name> "<attribute value>"
         """
-        key = HBNBCommand.val_get_key(command)
+        key = HBNBCommand.val_get_key(line)
         if key:
-            new_command = shlex.split(command)
+            new_command = shlex.split(line)
             if len(new_command) < 3:
                 print("** attribute name missing **")
             elif len(new_command) < 4 and '{' not in new_command[2]:
@@ -98,7 +101,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 obj = storage.all()[key]
                 if '{' in new_command[2]:
-                    str_dic = command[command.index('{'): command.index('}') + 1]
+                    str_dic = line[command.index('{'): command.index('}') + 1]
                     str_dic = str_dic.replace('"', "'")
                     adict = eval(str_dic)
                     for k, v in adict.items():
@@ -112,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
                             value = cls(value)
                         setattr(obj, att_name, value)
                     obj.save()
-                    
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
