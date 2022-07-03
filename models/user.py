@@ -2,6 +2,7 @@
 """ File contains the user class """
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
     """ creates a user basic info """
     def __init__(self):

@@ -20,7 +20,7 @@ class FileStorage():
     __objects = {}
 
     def all(self):
-        return  self.__objects
+        return self.__objects
 
     def new(self, obj):
         self.__objects[obj.__class__.__name__ + '.' + obj.id] = ob
@@ -29,15 +29,14 @@ class FileStorage():
         """
         Method: Serializes __objects to the JSON file (path: __file_path)
         """
-        #comment: [objs_dict] Dictionary contains all dict ot the objects
+        # comment: [objs_dict] Dictionary contains all dict ot the objects
         objs_dict = {}
 
-        #comment: Serializable objects and save in json file
+        # comment: Serializable objects and save in json file
         for key, obj in self.__objects.items():
             objs_dict[key] = obj.to_dict()
         with open(self.__file_path, mode="w") as file_json:
             file_json.write(json.dumps(objs_dict))
-
 
     def reload(self):
         """
