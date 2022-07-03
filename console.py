@@ -2,7 +2,6 @@
 """ console contains the enery point of the command interpreter """
 import cmd
 import shlex
-from types import new_class
 from models import classes
 from models import storage
 
@@ -86,9 +85,34 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn`t exist **")
 
     def do_update(self, command):
-        """Updates the arguments"""
-
-
+        """Updates the arguments.
+        Usage: update <class name> <id> <attribute name> "<attribute value>"
+        """
+        key = HBNBCommand.val_get_key(command)
+        if key:
+            new_command = shlex.split(command)
+            if len(new_command) < 3:
+                print("** attribute name missing **")
+            elif len(new_command) < 4 and '{' not in new_command[2]:
+                print("** value missing **")
+            else:
+                obj = storage.all()[key]
+                if '{' in new_command[2]:
+                    str_dic = command[command.index('{'): command.index('}') + 1]
+                    str_dic = str_dic.replace('"', "'")
+                    adict = eval(str_dic)
+                    for k, v in adict.items():
+                        setattr(obj, k, v)
+                else:
+                    for i in range(2, len(new_command)):
+                        new_command[i] = new_command[i].strip('",')
+                        att_name, value = new_command[2:4]
+                        if att_name in obj.__dict__:
+                            cls = type(obj.__dict__[att_name])
+                            value = cls(value)
+                        setattr(obj, att_name, value)
+                    obj.save()
+                    
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
