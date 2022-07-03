@@ -14,10 +14,10 @@ class BaseModel():
             self.update_at = datetime.now()
 
         else:
-            form = "%Y-%m-%dT%H:%M:%S.%f"
+            str = "%Y-%m-%dT%H:%M:%S.%f"
             del kwargs['__class__']
-            kwargs['created_at'] = datetime.strptime(kwargs["created_at"], form)
-            kwargs['update_at'] = datetime.strptime(kwargs["update_at"], form)
+            kwargs['created_at'] = datetime.strptime(kwargs["created_at"], str)
+            kwargs['update_at'] = datetime.strptime(kwargs["update_at"], str)
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
@@ -26,9 +26,9 @@ class BaseModel():
         return f'BaseModel({name} ({self.id}) {self.__dict__})'
 
     def save(self):
-        """ 
+        """
             updates the public instance attribute update_at with
-            the current datetime 
+            the current datetime
         """
         self.update_at = datetime.now()
         models.storage.save()
