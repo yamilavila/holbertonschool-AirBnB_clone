@@ -4,7 +4,7 @@ Class FireStorage
 """
 from models.base_model import BaseModel
 import json
-from . import classes
+from .. import classes
 
 
 class FileStorage():
