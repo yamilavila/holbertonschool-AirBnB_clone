@@ -14,10 +14,10 @@ class BaseModel():
             self.update_at = datetime.now()
 
         else:
-            str = "%Y-%m-%dT%H:%M:%S.%f"
+            mat = "%Y-%m-%dT%H:%M:%S.%f"
             del kwargs['__class__']
-            kwargs['created_at'] = datetime.strptime(kwargs["created_at"], str)
-            kwargs['update_at'] = datetime.strptime(kwargs["update_at"], str)
+            kwargs['created_at'] = datetime.strptime(kwargs["created_at"], mat)
+            kwargs['update_at'] = datetime.strptime(kwargs["update_at"], mat)
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
