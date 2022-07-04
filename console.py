@@ -51,7 +51,7 @@ class HBNBCommand(cmd.Cmd):
         (in the JSON file) & prints id"""
         if command is None:
             print("** class name missing **")
-        elif command == "BaseModel":
+        elif command in classes:
             n_class = classes[command]()
             print(n_class.id)
             storage.new(n_class)

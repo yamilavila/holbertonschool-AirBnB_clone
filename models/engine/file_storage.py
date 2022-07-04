@@ -30,11 +30,11 @@ class FileStorage():
         Method: Serializes __objects to the JSON file (path: __file_path)
         """
         # comment: [objs_dict] Dictionary contains all dict of the objects
-        objs_dict = {}
+        new_dict = {}
 
         # comment: Serializable objects and save in json file
         with open(self.__file_path, mode="w") as file_json:
-            for key, val in self.__objects.items():
+            for key, val in self.__objects.items(file_json):
                 new_dict[key] = val.to_dict()
             json.dump(new_dict, file_json, default=str)
 
