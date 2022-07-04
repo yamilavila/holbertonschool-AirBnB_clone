@@ -33,18 +33,18 @@ class HBNBCommand(cmd.Cmd):
         return key
 
     """This first 3 are the basic commands for the interpreter"""
-    def do_quit(self, command):
-        """ Quit command to exit the program """
-        return True
-
-    def do_EOE(self, command):
-        """ End of file.. Ends program """
-        print()
-        return True
 
     def emptyline(self):
         """ when user pres <ENTER> nothing is executed  """
         pass
+
+    def do_EOE(self, command):
+        """ End of file.. Ends program """
+        return True
+
+    def do_quit(self, command):
+        """ Quit command to exit the program """
+        return True
 
     def do_create(self, command):
         """Creates a new instance of BaseModel, saves it
@@ -101,7 +101,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 obj = storage.all()[key]
                 if '{' in new_command[2]:
-                    str_dic = line[command.index('{'): command.index('}') + 1]
+                    str_dic = command[command.index('{'): command.index('}') + 1]
                     str_dic = str_dic.replace('"', "'")
                     adict = eval(str_dic)
                     for k, v in adict.items():
