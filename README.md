@@ -25,11 +25,12 @@ or even show objects.
 
 `./ console.py `
 ### How to use i
-`(hbdb) help`
-
-`Documented commands (type help <topic>):`
-`EOE  all  create  destroy  help  quit  show  update`
-
+```
+(hbdb) help
+Documented commands (type help <topic>):
+========================================
+EOE  all  create  destroy  help  quit  show  update
+```
 
 ### Examples
 
