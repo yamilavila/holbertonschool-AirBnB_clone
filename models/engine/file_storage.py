@@ -44,7 +44,7 @@ class FileStorage():
         try:
             with open(self.__file_path, 'r') as j_file:
                 temp_dic = json.loads(j_file.read())
-                for key, val in temp_dic.items():
+                for key, value in temp_dic.items():
                     self.__objects[key] = eval(value["__class__"])(**value)
         except IOError:
             pass

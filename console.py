@@ -4,6 +4,13 @@ import cmd
 import shlex
 from models import classes
 from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.city import City
+from models.state import State
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -29,7 +36,7 @@ class HBNBCommand(cmd.Cmd):
             if tmp_val not in storage.all():
                 print("** no instance found **")
             else:
-                key = tmp_value
+                key = tmp_val
         return key
 
     """This first 3 are the basic commands for the interpreter"""
@@ -62,13 +69,13 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, command):
         """Prints the string representation of an instance based
         on the name & id"""
-        key = HBNBCommand.val_get_key(command)
+        key = HBNBCommand.key_for_command(command)
         if key:
             print(storage.all()[key])
 
-    def destroy(self, command):
+    def do_destroy(self, command):
         """Deletes an instance based on the class name and id"""
-        key = HBNBCommand.val_get_key(command)
+        key = HBNBCommand.key_for_command(command)
         if key:
             del storage.all()[key]
             storage.save()
@@ -87,13 +94,13 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn`t exist **")
 
-    def do_update(self, line):
+    def do_update(self, command):
         """Updates the arguments.
         Usage: update <class name> <id> <attribute name> "<attribute value>"
         """
-        key = HBNBCommand.val_get_key(line)
+        key = HBNBCommand.key_for_command(command)
         if key:
-            new_command = shlex.split(line)
+            new_command = shlex.split(command)
             if len(new_command) < 3:
                 print("** attribute name missing **")
             elif len(new_command) < 4 and '{' not in new_command[2]:
