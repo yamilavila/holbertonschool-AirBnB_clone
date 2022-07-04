@@ -9,9 +9,9 @@ from models.review import Review
 from models.amenity import Amenity
 
 
-classes = {'BaseModel': BaseModel, 'City': City, 'User': User, 
-            'Place': Place, 'State': State, 'Amenity': Amenity,
-            'Review': Review}
+classes = {'BaseModel': BaseModel, 'City': City, 'User': User,
+           'Place': Place, 'State': State, 'Amenity': Amenity,
+           'Review': Review}
 
 storage = FileStorage()
 storage.reload()
