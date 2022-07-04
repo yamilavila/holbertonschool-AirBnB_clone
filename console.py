@@ -94,13 +94,13 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn`t exist **")
 
-    def do_update(self, command):
+    def do_update(self, commd):
         """Updates the arguments.
         Usage: update <class name> <id> <attribute name> "<attribute value>"
         """
-        key = HBNBCommand.key_for_command(command)
+        key = HBNBCommand.key_for_command(commd)
         if key:
-            new_command = shlex.split(command)
+            new_command = shlex.split(commd)
             if len(new_command) < 3:
                 print("** attribute name missing **")
             elif len(new_command) < 4 and '{' not in new_command[2]:
@@ -108,7 +108,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 obj = storage.all()[key]
                 if '{' in new_command[2]:
-                    str_dic = command[command.index('{'): command.index('}') + 1]
+                    str_dic = commd[commd.index('{'): commd.index('}') + 1]
                     str_dic = str_dic.replace('"', "'")
                     adict = eval(str_dic)
                     for k, v in adict.items():
