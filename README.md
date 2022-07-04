@@ -59,6 +59,7 @@ ac8b9ffe-af76-4dee-9812-c90a1d627f30
 *[BaseModel](ac8b9ffe-af76-4dee-9812-c90a1d627f30) {'id': 'ac8b9ffe-af76-4dee-9812-c90a1d6
 27f30', 'created_at': datetime.datetime(2022, 7, 4, 23, 23, 53, 537703),
 'update_at': datetime.datetime(2022, 7, 4, 23, 23, 53, 537708)}
-(hbdb)
+(hbdb) quit
+vagrant@ubuntu-focal:~/holbertonschool-AirBnB_clone$
 ```
 ![hbnh](https://i.imgur.com/LrSQ55j.png)
