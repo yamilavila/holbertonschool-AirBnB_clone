@@ -32,13 +32,13 @@ class TestBaseModelClass(unittest.TestCase):
         self.assertEqual(str(self.before_update), str(self.after_update))
 
     def testDict(self):
-        self.dictionary = dict(self.new_instance_1.__dict__)
-        self.dictionary['__class__'] = "BaseModel"
-        self.dictionary['created_at'] =\
-            self.dictionary['created_at'].isoformat()
-        self.dictionary['updated_at'] =\
-            self.dictionary['updated_at'] =\
-        self.assertDictEqual(self.dictionary, self.new_instance_1.to_dict())
+        self.dict = dict(self.new_instance_1.__dict__)
+        self.dict['__class__'] = "BaseModel"
+        self.dict['created_at'] =\
+            self.dict['created_at'].isoformat()
+        self.dict['updated_at'] =\
+            self.dict['updated_at'] =\
+            self.assertDictEqual(self.dict, self.new_instance_1.to_dict())
 
 
 class CodeStyleTest(unittest.TestCase):
@@ -47,9 +47,9 @@ class CodeStyleTest(unittest.TestCase):
     """
 
     def testPycodestyle(self):
-    """
-    Test cases for pycodestyle
-    """
+        """
+        Test cases for pycodestyle
+        """
     code_style = pycodestyle.StyleGuide(quiet=True)
     result = code_style.check_files(["models/base_model.py"])
     self.assertEqual(result.total_errors, 0, "BaseModel pycodestyle error")
