@@ -29,23 +29,24 @@ class FileStorage():
         """
         Method: Serializes __objects to the JSON file (path: __file_path)
         """
-        # comment: [objs_dict] Dictionary contains all dict ot the objects
+        # comment: [objs_dict] Dictionary contains all dict of the objects
         objs_dict = {}
 
         # comment: Serializable objects and save in json file
         with open(self.__file_path, mode="w") as file_json:
-            for key, obj in self.__objects.items():
-                objs_dict[key] = obj.to_dict()
-            file_json.dumps(objs_dict, file_json)
+            for key, val in self.__objects.items():
+                new_dict[key] = val.to_dict()
+            json.dump(new_dict, file_json, default=str)
 
     def reload(self):
         """
         Deserializes the JSON file to __objects
         """
+        temp_dict = {}
         try:
             with open(self.__file_path, mode="r") as file_json:
-                for key, values in json.load(file_json).items():
-                    class_name = values["__class__"]
-                    self.new(class_dict[class_name](**values))
+                temp_dict = json.loads(file_json.read())
+                for key, values in temp_dict.items():
+                    self.__objects[key] = eval(val["__class__"])(**val)
         except FileNotFoundError:
             pass
