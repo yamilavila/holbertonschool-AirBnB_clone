@@ -10,6 +10,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class FileStorage():
     """
     Serializes instances to a JSON file and deserializes JSON file
@@ -19,24 +20,25 @@ class FileStorage():
     __objects = {}
 
     def all(self):
-        return  self.__objects
+        """ return all objects of the dictionary """
+        return self.__objects
 
     def new(self, obj):
+        """ create a new object in the dictionary  """
         self.__objects[obj.__class__.__name__ + '.' + obj.id] = obj
 
     def save(self):
         """
         Method: Serializes __objects to the JSON file (path: __file_path)
         """
-        #comment: [objs_dict] Dictionary contains all dict ot the objects
+        # comment: [objs_dict] Dictionary contains all dict ot the objects
         objs_dict = {}
 
-        #comment: Serializable objects and save in json file
+        # comment: Serializable objects and save in json file
         for key, obj in self.__objects.items():
             objs_dict[key] = obj.to_dict()
         with open(self.__file_path, mode="w") as file_json:
             file_json.write(json.dumps(objs_dict))
-
 
     def reload(self):
         ''' Method Deserializes '''
@@ -48,5 +50,3 @@ class FileStorage():
                     self.__objects[key] = eval(value["__class__"])(**value)
         except IOError:
             pass
-
-
