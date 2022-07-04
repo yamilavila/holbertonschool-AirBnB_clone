@@ -24,14 +24,39 @@ or even show objects.
 ### How to start it
 
 `./ console.py `
-### How to use i
+
+### How to use it
+
+Run the console
+
+syntax:
+	(hbbd) command <BaseModel> id
+
+## Example:
+
 ```
 (hbdb) help
+
 Documented commands (type help <topic>):
 ========================================
 EOE  all  create  destroy  help  quit  show  update
 ```
 
-### Examples
+```
+(hbdb) create BaseModel
+702e8662-8eae-4781-bf8f-a09d06fe1055
+```
 
+```
+(hbdb) create BaseModel
+8779ea41-c044-40d7-a212-8ac48941b2e2
+(hbdb) destroy BaseModel 8779ea41-c044-40d7-a212-8ac48941b2e2
+(hbdb) show BaseModel 8779ea41-c044-40d7-a212-8ac48941b2e2
+** no instance found **
+(hbdb) create BaseModel
+ac8b9ffe-af76-4dee-9812-c90a1d627f30
+(hbdb) show BaseModel ac8b9ffe-af76-4dee-9812-c90a1d627f30
+*[BaseModel](ac8b9ffe-af76-4dee-9812-c90a1d627f30) {'id': 'ac8b9ffe-af76-4dee-9812-c90a1d627f30', 'created_at': datetime.datetime(2022, 7, 4, 23, 23, 53, 537703), 'update_at': datetime.datetime(2022, 7, 4, 23, 23, 53, 537708)}
+(hbdb)
+```
 ![hbnh](https://i.imgur.com/LrSQ55j.png)
