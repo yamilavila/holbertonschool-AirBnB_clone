@@ -24,7 +24,13 @@ or even show objects.
 ### How to start it
 
 `./ console.py `
-### How to use it
+### How to use i
+`(hbdb) help
+
+Documented commands (type help <topic>):
+========================================
+EOE  all  create  destroy  help  quit  show  update
+`
 
 ### Examples
 
