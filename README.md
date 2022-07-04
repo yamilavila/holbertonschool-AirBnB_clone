@@ -28,7 +28,6 @@ or even show objects.
 `(hbdb) help`
 
 `Documented commands (type help <topic>):`
-`========================================`
 `EOE  all  create  destroy  help  quit  show  update`
 
 
