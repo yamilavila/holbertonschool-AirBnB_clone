@@ -10,7 +10,6 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-
 class FileStorage():
     """
     Serializes instances to a JSON file and deserializes JSON file
@@ -20,33 +19,34 @@ class FileStorage():
     __objects = {}
 
     def all(self):
-        return self.__objects
+        return  self.__objects
 
     def new(self, obj):
-        self.__objects[obj.__class__.__name__ + '.' + obj.id] = ob
+        self.__objects[obj.__class__.__name__ + '.' + obj.id] = obj
 
     def save(self):
         """
         Method: Serializes __objects to the JSON file (path: __file_path)
         """
-        # comment: [objs_dict] Dictionary contains all dict of the objects
-        new_dict = {}
+        #comment: [objs_dict] Dictionary contains all dict ot the objects
+        objs_dict = {}
 
-        # comment: Serializable objects and save in json file
+        #comment: Serializable objects and save in json file
+        for key, obj in self.__objects.items():
+            objs_dict[key] = obj.to_dict()
         with open(self.__file_path, mode="w") as file_json:
-            for key, val in self.__objects.items(file_json):
-                new_dict[key] = val.to_dict()
-            json.dump(new_dict, file_json, default=str)
+            file_json.write(json.dumps(objs_dict))
+
 
     def reload(self):
-        """
-        Deserializes the JSON file to __objects
-        """
-        temp_dict = {}
+        ''' Method Deserializes '''
+        temp_dic = {}
         try:
-            with open(self.__file_path, mode="r") as file_json:
-                temp_dict = json.loads(file_json.read())
-                for key, values in temp_dict.items():
-                    self.__objects[key] = eval(val["__class__"])(**val)
-        except FileNotFoundError:
+            with open(self.__file_path, 'r') as j_file:
+                temp_dic = json.loads(j_file.read())
+                for key, val in temp_dic.items():
+                    self.__objects[key] = eval(value["__class__"])(**value)
+        except IOError:
             pass
+
+
