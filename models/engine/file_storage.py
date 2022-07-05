@@ -9,6 +9,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+from models.user import User
 
 
 class FileStorage():
@@ -35,10 +36,10 @@ class FileStorage():
         objs_dict = {}
 
         # comment: Serializable objects and save in json file
-        for key, obj in self.__objects.items():
-            objs_dict[key] = obj.to_dict()
-        with open(self.__file_path, mode="w") as file_json:
-            file_json.write(json.dumps(objs_dict))
+        with open(self.__file_path, 'w') as j_file:
+            for k, v in self.__objects.items():
+                objs_dict[k] = v.to_dict()
+            json.dump(objs_dict, j_file, default=str)
 
     def reload(self):
         ''' Method Deserializes '''
