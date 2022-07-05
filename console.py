@@ -34,6 +34,8 @@ class HBNBCommand(cmd.Cmd):
             """ if id is missing or 3rd arg """
             print("** instance id missing **")
         else:
+            new_command[1] = new_command[1].strip('",')
+            tmp_val = '.'.join(new_command[0:2])
             if tmp_val not in storage.all():
                 print("** no instance found **")
             else:
