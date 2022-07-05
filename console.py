@@ -25,14 +25,15 @@ class HBNBCommand(cmd.Cmd):
         key = None
         tmp_val = None
         if not command:
+            """ if BaseModel is missing"""
             print("** class name missing ** ")
         elif new_command[0] not in classes:
+            """If BaseModel is bad written """
             print("** class doesn`t exist **")
         elif count < 2:
+            """ if id is missing or 3rd arg """
             print("** instance id missing **")
         else:
-            new_command[1] = new_command[1].strip('",')
-            tmp_val = '.'.join(new_command[0:2])
             if tmp_val not in storage.all():
                 print("** no instance found **")
             else:

@@ -44,8 +44,8 @@ class FileStorage():
         ''' Method Deserializes '''
         temp_dic = {}
         try:
-            with open(self.__file_path, 'r') as j_file:
-                temp_dic = json.loads(j_file.read())
+            with open(self.__file_path, 'r') as file_json:
+                temp_dic = json.loads(file_json.read())
                 for key, value in temp_dic.items():
                     self.__objects[key] = eval(value["__class__"])(**value)
         except IOError:
