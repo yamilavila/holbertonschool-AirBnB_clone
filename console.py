@@ -116,6 +116,17 @@ class HBNBCommand(cmd.Cmd):
                         setattr(obj, att_name, value)
                     obj.save()
 
+    def do_count(self, command):
+        commands = command.split()
+        if not command:
+            print("**class name missing**")
+        elif arg[0] in classes:
+            cnt = 0
+            for key in storage.all().keys():
+                if key[0: key.index('.')] == args[0]:
+                    cnt += 1
+            print(ctr)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
