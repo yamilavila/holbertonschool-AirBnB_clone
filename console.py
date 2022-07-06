@@ -8,7 +8,7 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
 
-    prompt = '(hbdb) '
+    prompt = '(hbdb)'
 
     """This is a static method for keys & arguments for one place validation"""
     @staticmethod
@@ -117,13 +117,14 @@ class HBNBCommand(cmd.Cmd):
                     obj.save()
 
     def do_count(self, command):
+        """count the instance of a class"""
         commands = command.split()
         if not command:
             print("**class name missing**")
-        elif arg[0] in classes:
+        elif commands[0] in classes:
             cnt = 0
             for key in storage.all().keys():
-                if key[0: key.index('.')] == args[0]:
+                if key[0: key.index('.')] == commands[0]:
                     cnt += 1
             print(ctr)
 
