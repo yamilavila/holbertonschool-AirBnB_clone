@@ -14,9 +14,9 @@ class TestBaseModelClass(unittest.TestCase):
     """ Class test Base Model """
 
     def setUp(self):
-       """ create base models """
-       self.x_base_model = BaseModel()
-       self.y_base_model = BaseModel()
+        """ create base models """
+        self.x_base_model = BaseModel()
+        self.y_base_model = BaseModel()
 
     def test_str_v_str(self):
         """ compare two stirng """
@@ -40,6 +40,7 @@ class TestBaseModelClass(unittest.TestCase):
         objdict = self.x_base_model.to_dict()
         self.kwarginstance = BaseModel(**objdict)
         self.assertIsInstance(self.kwarginstance, BaseModel)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -30,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
             if tmp_val not in storage.all():
                 print("** no instance found **")
             else:
-                key = tmp_value
+                key = tmp_val
         return key
 
     """This first 3 are the basic commands for the interpreter"""
@@ -101,7 +101,7 @@ class HBNBCommand(cmd.Cmd):
         """Updates the arguments.
         Usage: update <class name> <id> <attribute name> "<attribute value>"
         """
-        key = HBNBCommand.val_get_key(line)
+        key = HBNBCommand.key_for_command(line)
         if key:
             new_command = shlex.split(line)
             if len(new_command) < 3:
@@ -111,7 +111,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 obj = storage.all()[key]
                 if '{' in new_command[2]:
-                    str_dic = command[command.index('{'): command.index('}') + 1]
+                    str_dic = line[command.index('{'): line.index('}') + 1]
                     str_dic = str_dic.replace('"', "'")
                     adict = eval(str_dic)
                     for k, v in adict.items():

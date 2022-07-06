@@ -10,6 +10,7 @@ import unittest
 from models.base_model import BaseModel
 import os
 
+
 class TestFileStorage(unittest.TestCase):
     """unittest for FileStorage """
 
@@ -20,8 +21,6 @@ class TestFileStorage(unittest.TestCase):
         test_obj.save()
         try:
             os.remove("file.json")
-        except:
-            pass
 
     def test_objs(self):
         """ testing all the objects"""
@@ -41,7 +40,7 @@ class TestFileStorage(unittest.TestCase):
         test_obj = BaseModel()
         test_objx = FileStorage()
         test_objx.new(test_obj)
-        self.assertNotEqual(test_objx.all(),0)
+        self.assertNotEqual(test_objx.all(), 0)
 
     def test_realod(self):
         """ test realod method"""
@@ -71,6 +70,6 @@ class TestFileStorage(unittest.TestCase):
             file_str = j_file.read()
             self.assertIn("BaseModel", file_str)
 
+
 if __name__ == '__main__':
     unittest.main()
-

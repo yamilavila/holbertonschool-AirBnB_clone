@@ -28,7 +28,7 @@ class TestBaseModel(unittest.TestCase):
     def test_id(self):
         """ Test if each object has it own id"""
         self.assertNotEqual(self.X_user.id,
-                             self.Y_user.id)
+                            self.Y_user.id)
 
     def test_Init(self):
         """ check if init works """
