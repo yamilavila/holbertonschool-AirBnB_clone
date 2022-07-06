@@ -17,7 +17,7 @@ class BaseModel():
             mat = "%Y-%m-%dT%H:%M:%S.%f"
             del kwargs['__class__']
             kwargs['created_at'] = datetime.strptime(kwargs["created_at"], mat)
-            kwargs['update_at'] = datetime.strptime(kwargs["update_at"], mat)
+            kwargs['updated_at'] = datetime.strptime(kwargs["updated_at"], mat)
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
@@ -32,13 +32,13 @@ class BaseModel():
             updates the public instance attribute update_at with
             the current datetime
         """
-        self.update_at = datetime.now()
+        self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """ returns a dictironaty containing all keys/values of __dict__"""
         n_dict = self.__dict__.copy()
         n_dict["created_at"] = self.created_at.isoformat()
-        n_dict["update_at"] = self.update_at.isoformat()
+        n_dict["updated_at"] = self.updated_at.isoformat()
         n_dict["__class__"] = self.__class__.__name__
         return n_dict
