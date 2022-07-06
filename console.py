@@ -128,14 +128,12 @@ class HBNBCommand(cmd.Cmd):
 
     def do_count(self, command):
         """count the instance of a class"""
-        commands = command.split()
-        if not command:
+        ctr = 0
+        if command not in classes:
             print("**class name missing**")
-        elif commands[0] in classes:
-            cnt = 0
-            for key in storage.all().keys():
-                if key[0: key.index('.')] == commands[0]:
-                    cnt += 1
+        for key in storage.all.keys():
+            if comand in key:
+                cnt += 1
             print(ctr)
 
 
