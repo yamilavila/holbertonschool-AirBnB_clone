@@ -50,7 +50,7 @@ class TestBaseModel(unittest.TestCase):
     def test_date(self):
         """ test if date works """
         self.assertIsInstance(self.X_user.created_at, datetime)
-        self.assertIsInstance(self.Y_user.update_at, datetime)
+        self.assertIsInstance(self.Y_user.updated_at, datetime)
 
 
 if __name__ == "__main__":

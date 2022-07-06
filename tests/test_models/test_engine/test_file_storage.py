@@ -14,14 +14,6 @@ import os
 class TestFileStorage(unittest.TestCase):
     """unittest for FileStorage """
 
-    def test_file_path(self):
-        """ Testing file_path attribure"""
-        test_obj = BaseModel()
-        test_obj.id = "1"
-        test_obj.save()
-        try:
-            os.remove("file.json")
-
     def test_objs(self):
         """ testing all the objects"""
         self.assertEqual(dict, type(FileStorage._FileStorage__objects))
