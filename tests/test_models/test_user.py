@@ -52,6 +52,26 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(self.X_user.created_at, datetime)
         self.assertIsInstance(self.Y_user.updated_at, datetime)
 
+    def test_add_name(self):
+        self.X_user.name = "Andres"
+        self.assertEqual(self.X_user.name, "Andres")
+
+    def test_add_email(self):
+        self.X_user.email = "hello@gmail.com"
+        self.assertEqual(self.X_user.email, "hello@gmail.com")
+
+    def test_add_password(self):
+        self.X_user.password = "LaVida123"
+        self.assertEqual(self.X_user.password, "LaVida123")
+
+    def test_add_lname(self):
+        self.X_user.last_name = "Ventura"
+        self.assertEqual(self.X_user.last_name, "Ventura")
+
+
+
+
+
 
 if __name__ == "__main__":
     unittest.main()
