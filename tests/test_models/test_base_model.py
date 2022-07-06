@@ -10,7 +10,7 @@ from models.base_model import BaseModel
 from unittest.case import _AssertRaisesContext
 
 
-class TestBaseModelClass(unittest.TestCase):
+class TestBaseModel(unittest.TestCase):
     """ Class test Base Model """
 
     def setUp(self):
