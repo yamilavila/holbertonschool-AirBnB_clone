@@ -39,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
         """ when user pres <ENTER> nothing is executed  """
         pass
 
-    def do_EOE(self, command):
+    def do_EOF(self, command):
         """ End of file.. Ends program """
         return True
 
@@ -134,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
         for key in storage.all.keys():
             if comand in key:
                 cnt += 1
-            print(ctr)
+        print(ctr)
 
 
 if __name__ == '__main__':
