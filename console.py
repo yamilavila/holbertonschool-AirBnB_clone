@@ -8,7 +8,8 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
 
-    prompt = '(hbdb)'
+    prompt = '(hbdb) '
+    string = None
 
     """This is a static method for keys & arguments for one place validation"""
     @staticmethod
@@ -44,7 +45,16 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, command):
         """ Quit command to exit the program """
-        return True
+        self.close()
+        quit()
+
+    def help_quit(self):
+        print('\n'.join(['Quit command to exit the program\n']))
+
+    def close(self):
+        if self.string:
+            self.string.close()
+            self.string = None
 
     def do_create(self, command):
         """Creates a new instance of BaseModel, saves it
