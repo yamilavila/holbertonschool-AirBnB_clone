@@ -8,7 +8,7 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
 
-    prompt = '(hbdb) '
+    prompt = "(hbdb) "
 
     """This first 3 are the basic commands for the interpreter"""
 
@@ -16,11 +16,11 @@ class HBNBCommand(cmd.Cmd):
         """ when user pres <ENTER> nothing is executed  """
         pass
 
-    def do_EOF(self, command):
+    def do_EOF(self, arg):
         """ End of file.. Ends program \n"""
         return True
 
-    def do_quit(self, command):
+    def do_quit(self, arg):
         """ Quit command to exit the program\n """
         return True
 
