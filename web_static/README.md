@@ -1,7 +1,9 @@
 General
 
-    What is HTML
+    What is HTMLi
+
     How to create an HTML page
+
     What is a markup language
     What is the DOM
     What is an element / tag
